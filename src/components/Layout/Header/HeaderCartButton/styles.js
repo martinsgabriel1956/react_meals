@@ -23,9 +23,9 @@ export const Container = styled.button`
   background-color: #92320c;
 }
 
-.bump {
-  animation: bump 300ms ease-out;
-}
+  &.bump {
+    animation: bump 300ms ease-out;
+  }
 
 @keyframes bump {
   0% {
