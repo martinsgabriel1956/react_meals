@@ -17,6 +17,33 @@ export const Container = styled.button`
   &:active {
     background-color: #2c0d00;
   }
+
+  &:hover > Badge,
+  &:active > Badge {
+  background-color: #92320c;
+}
+
+.bump {
+  animation: bump 300ms ease-out;
+}
+
+@keyframes bump {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.9);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 `;
 
 export const Icon = styled.span`
