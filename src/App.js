@@ -1,6 +1,8 @@
+import { useState } from 'react';
+
 import { GlobalStyle } from './styles/global';
 
-import React, { useState } from 'react';
+import { CartContext } from './contexts/CartContext';
 
 import { Header } from './components/Layout/Header';
 import { Meals } from './components/Meals/';
