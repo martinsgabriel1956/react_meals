@@ -8,16 +8,17 @@ import { CartItem } from '../Cart/CartItem';
 import { CartContext } from '../../contexts/CartContext';
 
 export function Cart(props) {
-  const { items, totalAmount } = useContext(CartContext);
+  const { items, totalAmount, addItem, removeItem } = useContext(CartContext);
 
   const total = `$${totalAmount.toFixed(2)}`;
   const hasItems = items.length > 0;
 
-  function handleCartItemRemove() {
-    
+  function handleCartItemRemove(id) {
+    removeItem(id);
   }
-  function handleCartItemAdd() {
 
+  function handleCartItemAdd(item) {
+    addItem(item);
   }
 
   return (
