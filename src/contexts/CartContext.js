@@ -11,19 +11,19 @@ function cartReducer(state, action) {
     const updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount;
 
     return {
-      item: updatedItems,
+      items: updatedItems,
       totalAmount: updatedTotalAmount
     };
   }
   return defaultCartState;
 }
-
 export const CartContext = createContext({ 
   items: [],
   totalAmount: 0,
   addItem: (item) => {},
   removeItem: (id) => {},
 });
+
 
 export function CartContextProvider({children, ...props}) {
   const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState);
