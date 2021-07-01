@@ -16,7 +16,7 @@ export function CartContextProvider({children, ...props}) {
   };
 
   return (
-    <CartContext.Provider>
+    <CartContext.Provider value={{items: [], totalAmount: 0, addItem: handleAddItemToCart, removeItem: handleRemoveItemFromCart}}>
       {children}
     </CartContext.Provider>
   );

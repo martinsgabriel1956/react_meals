@@ -2,8 +2,6 @@ import { useState } from 'react';
 
 import { GlobalStyle } from './styles/global';
 
-import { CartContext } from './contexts/CartContext';
-
 import { Header } from './components/Layout/Header';
 import { Meals } from './components/Meals/';
 import { Cart } from './components/Cart/';
