@@ -9,7 +9,7 @@ export function Header(props) {
     <>
       <Container>
         <h1>ReactMeals</h1>
-        <HeaderCartButton />
+        <HeaderCartButton onClick={props.onShowCart} />
       </Container>
       <MainImg>
         <img src={mealsImage} alt="A table full of delicious food" />

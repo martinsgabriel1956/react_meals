@@ -2,9 +2,9 @@ import { Container, Icon, Badge } from './styles';
 
 import { CartIcon } from '../../../Cart/CartIcon.js' ;
 
-export function HeaderCartButton() {
+export function HeaderCartButton(props) {
   return (
-    <Container>
+    <Container onClick={props.onClick}>
       <Icon>
         <CartIcon />
       </Icon>

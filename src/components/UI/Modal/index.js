@@ -4,7 +4,7 @@ import { BackdropStyle, ModalStyle, Content } from './styles';
 
 function Backdrop(props) {
   return (
-    <BackdropStyle />
+    <BackdropStyle onClick={props.onClose} />
   );
 }
 
@@ -23,7 +23,7 @@ export function Modal({children, ...props}) {
 
   return (
     <>
-      {createPortal(<Backdrop />, portalElement)}
+      {createPortal(<Backdrop onClose={props.onClose} />, portalElement)}
       {createPortal(<ModalOverlay>{children}</ModalOverlay>, portalElement)}
     </>
   );
