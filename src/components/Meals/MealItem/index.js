@@ -1,3 +1,5 @@
+import { MealItemForm } from './MealItemForm';
+
 import { Container, Description, Price } from './styles';
 
 export function MealItem(props) {
@@ -9,7 +11,7 @@ export function MealItem(props) {
         <Price>{`$${props.price.toFixed(2)}`}</Price>
       </div>
       <div>
-
+        <MealItemForm id={props.id}/>
       </div>
     </Container>
   );
