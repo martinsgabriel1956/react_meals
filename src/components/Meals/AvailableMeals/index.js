@@ -1,3 +1,7 @@
+import { Card } from '../../UI/Card';
+import { MealItem } from '../../Meals/MealItem';
+
+
 import { Container } from './styles';
 
 const DUMMY_MEALS = [
@@ -25,16 +29,23 @@ const DUMMY_MEALS = [
     description: 'Healthy...and green...',
     price: 18.99,
   },
-];
+]
 
 export function AvailableMeals() {
   return (
     <Container>
-      <ul>
-        {DUMMY_MEALS.map(meal => (
-          <li>{meal.name}</li>
-        ))}
-      </ul>
+      <Card>
+        <ul>
+          {DUMMY_MEALS.map((meal) => (
+            <MealItem 
+              key={meal.id} 
+              name={meal.name} 
+              description={meal.description} 
+              price={meal.price} 
+            />
+          ))}
+        </ul>
+      </Card>
     </Container>
-  );
-};
+  )
+}

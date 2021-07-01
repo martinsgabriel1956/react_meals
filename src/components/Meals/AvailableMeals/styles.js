@@ -6,7 +6,7 @@ export const Container = styled.section`
   margin: 2rem auto;
   animation: meals-appear 1s ease-out forwards;
 
-  > ul {
+   ul {
     list-style: none;
     margin: 0;
     padding: 0;
