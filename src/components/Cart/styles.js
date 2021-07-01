@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CardItems = styled.ul`
+export const CartItems = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
@@ -20,10 +20,9 @@ export const Total = styled.div`
 export const Actions = styled.div`
   text-align: right;
 
-  button {
+  > button {
     font: inherit;
     cursor: pointer;
-    background-color: transparent;
     border: 1px solid #8a2b06;
     padding: 0.5rem 2rem;
     border-radius: 25px;
@@ -38,11 +37,12 @@ export const Actions = styled.div`
   }
 `
 
+export const AltButton = styled.button`
+  color: #8a2b06;
+  background-color: transparent;
+`
+
 export const Button = styled.button`
   background-color: #8a2b06;
   color: white;
-`
-
-export const AltButton = styled.button`
-  color: #8a2b06;
 `
