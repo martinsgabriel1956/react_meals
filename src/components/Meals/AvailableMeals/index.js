@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react'
 import { Card } from '../../UI/Card'
+import { Loading } from '../../UI/Loading';
 import { MealItem } from '../../Meals/MealItem'
 
-import { Container } from './styles'
+import { Container } from './styles';
+
 
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css'
 
 export function AvailableMeals() {
   const [meals, setMeals] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     async function fetchMeals() {
@@ -34,29 +37,34 @@ export function AvailableMeals() {
         }
 
         setMeals(loadedMeals)
+        setIsLoading(false)
       } catch (e) {
         console.error(toast.error(`${e.message}`))
       }
     }
 
-    fetchMeals();
+    fetchMeals()
   }, [])
 
   return (
     <Container>
-      <Card>
-        <ul>
-          {meals.map((meal) => (
-            <MealItem
-              id={meal.id}
-              key={meal.id}
-              name={meal.name}
-              description={meal.description}
-              price={meal.price}
-            />
-          ))}
-        </ul>
-      </Card>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <Card>
+          <ul>
+            {meals.map((meal) => (
+              <MealItem
+                id={meal.id}
+                key={meal.id}
+                name={meal.name}
+                description={meal.description}
+                price={meal.price}
+              />
+            ))}
+          </ul>
+        </Card>
+      )}
     </Container>
   )
 }
