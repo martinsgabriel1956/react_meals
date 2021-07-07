@@ -47,7 +47,7 @@ export function Checkout(props) {
 
     const formIsValid = nameIsValid && streetIsValid && postalCodeIsValid && cityInputIsValid;
 
-    if(formIsValid) toast.error('Preencha todos os campos');
+    if(!formIsValid) toast.error('Preencha todos os campos');
 
     props.onConfirm({
       name,
