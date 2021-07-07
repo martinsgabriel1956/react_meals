@@ -26,12 +26,12 @@ export function Checkout(props) {
     const name = nameInputRef.current.value;
     const street = streetInputRef.current.value;
     const postalCode = postalCodeInputRef.current.value;
-    const cityInput = cityInputRef.current.value;
+    const city = cityInputRef.current.value;
 
     const nameIsValid = !isEmpty(name);
     const streetIsValid = !isEmpty(street);
     const postalCodeIsValid = !isEmpty(postalCode);
-    const cityInputIsValid = !isEmpty(cityInput);
+    const cityInputIsValid = !isEmpty(city);
 
     setFormInputsValidity({
       name: nameIsValid,
@@ -48,6 +48,13 @@ export function Checkout(props) {
     const formIsValid = nameIsValid && streetIsValid && postalCodeIsValid && cityInputIsValid;
 
     if(formIsValid) toast.error('Preencha todos os campos');
+
+    props.onConfirm({
+      name,
+      street,
+      city,
+      postalCode
+    });
   }
 
   return (

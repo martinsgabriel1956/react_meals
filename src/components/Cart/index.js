@@ -1,30 +1,41 @@
 import { useContext, useState } from 'react'
 
-import { CartItems, Total, Actions, Button, AltButton } from './styles'
+import { CartItems, Total, Actions, Button, AltButton } from './styles';
 
-import { Modal } from '../UI/Modal'
-import { CartItem } from '../Cart/CartItem'
-import { Checkout } from '../Cart/Checkout'
+import { Modal } from '../UI/Modal';
+import { CartItem } from '../Cart/CartItem';
+import { Checkout } from '../Cart/Checkout';
 
-import { CartContext } from '../../contexts/CartContext'
+import { CartContext } from '../../contexts/CartContext';
 
 export function Cart(props) {
-  const [isCheckOut, setIsCheckOut] = useState(false)
-  const { items, totalAmount, addItem, removeItem } = useContext(CartContext)
+  const [isCheckOut, setIsCheckOut] = useState(false);
+  const { items, totalAmount, addItem, removeItem } = useContext(CartContext);
 
-  const total = `$${totalAmount.toFixed(2)}`
-  const hasItems = items.length > 0
+  const total = `$${totalAmount.toFixed(2)}`;
+  const hasItems = items.length > 0;
 
   function handleCartItemRemove(id) {
-    removeItem(id)
-  }
+    removeItem(id);
+  };
 
   function handleCartItemAdd(item) {
-    addItem(item)
-  }
+    addItem(item);
+  };
 
   function handleOrder() {
-    setIsCheckOut(true)
+    setIsCheckOut(true);
+  };
+
+  function handleSubmitOrder(userData) {
+    fetch('https://react-meals-bf77a-default-rtdb.firebaseio.com/orders.json', {
+      method: 'POST',
+      body: JSON.stringify({
+        user: userData,
+        orderedItems: items
+      })
+    });
+
   }
 
   return (
@@ -46,7 +57,7 @@ export function Cart(props) {
         <span>{total}</span>
       </Total>
       {isCheckOut ? (
-        <Checkout onCancel={props.onClose} />
+        <Checkout onConfirm={handleSubmitOrder} onCancel={props.onClose} />
       ) : (
         <Actions>
           <AltButton onClick={props.onClose}>Close</AltButton>
